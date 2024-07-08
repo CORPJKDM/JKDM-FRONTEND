@@ -1,3 +1,4 @@
+// src/ui/components/Home.js
 import React, { useContext } from 'react';
 import { UserContext } from '../../application/context/UserContext';
 import '../../ui/styles/Home.css'; // Asegúrate de que esta ruta sea correcta
@@ -22,7 +23,7 @@ const Home = () => {
           <div className="user">
             <img src="/src/assets/user.png" alt="User" className="user-image" />
             <div className="user-info">
-              <span className="user-name">{user?.first_name} {user?.last_name}</span>
+              <span className="user-name">{user?.username}</span>
               <span className="user-role">Admin</span>
             </div>
           </div>
@@ -36,7 +37,7 @@ const Home = () => {
           </div>
         </div>
         <div className="welcome">
-          <h1>Bienvenido {user?.first_name} {user?.last_name}</h1>
+          <h1>Bienvenido {user?.username}</h1>
           <p>Here is some important information for you:</p>
         </div>
         <div className="buttons">

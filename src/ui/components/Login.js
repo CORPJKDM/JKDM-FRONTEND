@@ -1,3 +1,4 @@
+// src/ui/components/Login.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../application/services/api';
@@ -14,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const userData = await login(username, password);
-      setUser({ username: userData.username });
+      setUser(userData);
       alert('Inicio de sesión exitoso');
       navigate('/home');
     } catch (error) {
@@ -29,7 +30,7 @@ const Login = () => {
         <h1>Inicia Sesión</h1>
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
-            <img src="/iconloginmail.png" alt="Email Icon" />
+            <img src="iconloginmail.png" alt="Email Icon" />
             <input
               type="text"
               id="username"
@@ -54,7 +55,7 @@ const Login = () => {
         </form>
       </div>
       <div className="login-image">
-        <img src="fondologin.png" alt="Login Illustration" />
+        <img src="/fondologin.png" alt="fondologin" />
       </div>
     </div>
   );

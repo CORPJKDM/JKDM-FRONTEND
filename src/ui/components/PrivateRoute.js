@@ -1,10 +1,12 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+// src/ui/components/PrivateRoute.js
+import React, { useContext } from 'react';
+import { Route, Navigate } from 'react-router-dom';
+import { UserContext } from '../../application/context/UserContext';
 
-const PrivateRoute = () => {
-  const isAuthenticated = !!localStorage.getItem('token'); // Verifica si hay un token en localStorage
+const PrivateRoute = ({ element, ...rest }) => {
+  const { user } = useContext(UserContext);
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  return user ? element : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
