@@ -5,6 +5,8 @@ import '../../ui/styles/Cotizaciones.css';
 
 const Cotizaciones = () => {
   const [cotizaciones, setCotizaciones] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortType, setSortType] = useState('');
 
   useEffect(() => {
     const fetchCotizaciones = async () => {
@@ -14,6 +16,32 @@ const Cotizaciones = () => {
 
     fetchCotizaciones();
   }, []);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSortChange = (e) => {
+    setSortType(e.target.value);
+  };
+
+  const getFilteredCotizaciones = () => {
+    let filteredCotizaciones = cotizaciones.filter((cotizacion) =>
+      cotizacion.cliente.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (sortType === 'price-asc') {
+      filteredCotizaciones.sort((a, b) => a.monto - b.monto);
+    } else if (sortType === 'price-desc') {
+      filteredCotizaciones.sort((a, b) => b.monto - a.monto);
+    } else if (sortType === 'date-asc') {
+      filteredCotizaciones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+    } else if (sortType === 'date-desc') {
+      filteredCotizaciones.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+    }
+
+    return filteredCotizaciones;
+  };
 
   return (
     <div className="home-container">
@@ -41,6 +69,22 @@ const Cotizaciones = () => {
       <div className="main-content">
         <div className="cotizaciones-container">
           <h1>Lista de Cotizaciones</h1>
+          <div className="search-sort">
+            <input
+              type="text"
+              placeholder="Buscar por cliente..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="search-input"
+            />
+            <select onChange={handleSortChange} className="sort-select">
+              <option value="">Ordenar por...</option>
+              <option value="price-asc">Precio: Menor a Mayor</option>
+              <option value="price-desc">Precio: Mayor a Menor</option>
+              <option value="date-asc">Fecha: Más antigua a más reciente</option>
+              <option value="date-desc">Fecha: Más reciente a más antigua</option>
+            </select>
+          </div>
           <table className="cotizaciones-table">
             <thead>
               <tr>
@@ -53,7 +97,7 @@ const Cotizaciones = () => {
               </tr>
             </thead>
             <tbody>
-              {cotizaciones.map((cotizacion) => (
+              {getFilteredCotizaciones().map((cotizacion) => (
                 <tr key={cotizacion.id}>
                   <td>{cotizacion.id}</td>
                   <td>{cotizacion.cliente}</td>

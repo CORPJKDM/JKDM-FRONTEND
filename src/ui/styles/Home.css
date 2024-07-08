@@ -43,3 +43,37 @@
     flex: 1;
     padding: 20px;
 }
+
+.welcome {
+    margin-bottom: 20px;
+}
+
+.welcome h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.primary-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.secondary-button {
+    background-color: #f8f9fc;
+    color: #333;
+    border: 1px solid #ddd;
+}
