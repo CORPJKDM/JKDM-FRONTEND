@@ -1,6 +1,6 @@
-// src/ui/components/Home.js
 import React, { useContext } from 'react';
 import { UserContext } from '../../application/context/UserContext';
+import { Link } from 'react-router-dom';
 import '../../ui/styles/Home.css'; // Asegúrate de que esta ruta sea correcta
 
 const Home = () => {
@@ -12,14 +12,14 @@ const Home = () => {
         <img src="/logo.png" alt="Logo" className="logo" />
         <nav>
           <ul>
-            <li className="active"><a href="#">Dashboard</a></li>
-            <li><a href="#">Cotizaciones</a></li>
-            <li><a href="#">Historial</a></li>
-            <li><a href="#">Plantillas</a></li>
+            <li className="active"><Link to="/home">Dashboard</Link></li>
+            <li><Link to="/cotizaciones">Cotizaciones</Link></li>
+            <li><Link to="#">Historial</Link></li>
+            <li><Link to="#">Plantillas</Link></li>
           </ul>
         </nav>
         <div className="support">
-          <a href="#">Cerrar Sesión</a>
+          <Link to="#">Cerrar Sesión</Link>
           <div className="user">
             <img src="/src/assets/user.png" alt="User" className="user-image" />
             <div className="user-info">

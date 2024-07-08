@@ -1,9 +1,10 @@
-// src/ui/components/Login.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../application/services/api';
 import { UserContext } from '../../application/context/UserContext';
-import '../../ui/styles/Login.css'; // Asegúrate de que esta ruta sea correcta
+import '../../ui/styles/Login.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -16,10 +17,9 @@ const Login = () => {
     try {
       const userData = await login(username, password);
       setUser(userData);
-      //alert('Inicio de sesión exitoso');
       navigate('/home');
     } catch (error) {
-      //alert('Error de autenticación');
+      toast.error('Contraseña o Usuario Incorrectos');
     }
   };
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
-import './ui/styles/index.css'; 
+import './ui/styles/index.css'; // Asegúrate de que este archivo exista
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './application/context/UserContext';
 
@@ -10,8 +10,7 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <App />
-    </UserProvider>,
-  document.getElementById('root')
+    </UserProvider>
   </React.StrictMode>
 );
 
