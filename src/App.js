@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Home from './ui/components/Home';
+import Login from './ui/components/Login';
+import PrivateRoute from './ui/components/PrivateRoute';
+import CotizacionList from './ui/components/CotizacionList';
+import CotizacionDetail from './ui/components/CotizacionDetail';
+import { UserProvider } from './application/context/UserContext';
+import './ui/styles/App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/cotizaciones" element={<CotizacionList />} />
+            <Route path="/cotizaciones/:id" element={<CotizacionDetail />} />
+            <Route path="/" element={<Navigate to="/home" />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/login" />} /> {/* Redirecciona cualquier ruta desconocida al login */}
+        </Routes>
+      </Router>
+    </UserProvider>
   );
-}
+};
 
 export default App;

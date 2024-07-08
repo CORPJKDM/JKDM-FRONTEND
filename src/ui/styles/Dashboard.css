@@ -1,0 +1,22 @@
+.dashboard {
+    padding: 20px;
+}
+
+.notifications,
+.schedule {
+    margin-bottom: 20px;
+}
+
+h1,
+h2 {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 10px 0;
+}
