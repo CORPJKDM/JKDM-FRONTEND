@@ -16,10 +16,10 @@ const Login = () => {
     try {
       const userData = await login(username, password);
       setUser(userData);
-      alert('Inicio de sesión exitoso');
+      //alert('Inicio de sesión exitoso');
       navigate('/home');
     } catch (error) {
-      alert('Error de autenticación');
+      //alert('Error de autenticación');
     }
   };
 
