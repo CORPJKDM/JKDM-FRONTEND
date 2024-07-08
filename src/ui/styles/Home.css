@@ -1,128 +1,45 @@
 .home-container {
     display: flex;
-    height: 100vh;
 }
 
 .sidebar {
     width: 250px;
-    background-color: #f4f4f4;
+    background-color: #f8f9fc;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar .logo {
-    width: 150px;
-    /* Ajusta el tamaño del logo aquí */
+    width: 100%;
     margin-bottom: 20px;
 }
 
 .sidebar nav ul {
     list-style: none;
     padding: 0;
-    width: 100%;
 }
 
 .sidebar nav ul li {
-    margin: 10px 0;
+    margin-bottom: 10px;
 }
 
 .sidebar nav ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 16px;
+    font-weight: bold;
     display: block;
     padding: 10px;
     border-radius: 5px;
-    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
-.sidebar nav ul li.active a {
+.sidebar nav ul li.active a,
+.sidebar nav ul li a:hover {
     background-color: #007bff;
     color: white;
-}
-
-.sidebar .support {
-    margin-top: auto;
-    text-align: center;
-}
-
-.sidebar .support a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-.sidebar .user {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.sidebar .user .user-image {
-    width: 50px;
-    /* Ajusta el tamaño de la imagen del usuario aquí */
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
 }
 
 .main-content {
-    flex-grow: 1;
+    flex: 1;
     padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header .date {
-    font-size: 14px;
-    color: #888;
-}
-
-.header .search input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.welcome {
-    margin-bottom: 20px;
-}
-
-.welcome h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.welcome p {
-    color: #888;
-}
-
-.buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.buttons .primary-button,
-.buttons .secondary-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.buttons .primary-button {
-    background-color: #007bff;
-    color: white;
-}
-
-.buttons .secondary-button {
-    background-color: #f4f4f4;
-    color: #333;
 }

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './ui/components/Login';
 import Home from './ui/components/Home';
+import Cotizaciones from './ui/components/Cotizaciones'; // Importa el nuevo componente
 import { UserContext } from './application/context/UserContext';
 import { ToastContainer } from 'react-toastify';
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<PrivateRoute element={Home} />} />
+        <Route path="/cotizaciones" element={<PrivateRoute element={Cotizaciones} />} /> {/* Nueva ruta */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
